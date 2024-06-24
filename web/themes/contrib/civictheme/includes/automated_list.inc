@@ -66,6 +66,11 @@ function civictheme_preprocess_paragraph__civictheme_automated_list(array &$vari
   /** @var \Drupal\views\ViewExecutable $view */
   $view = _civictheme_automated_list__get_view($settings);
 
+  // Exit if _civictheme_automated_list__get_view($settings) returned NULL.
+  if (empty($view->id())) {
+    return;
+  }
+
   $settings['view_id'] = $view->id();
   $settings['view_display'] = $view->current_display;
 
